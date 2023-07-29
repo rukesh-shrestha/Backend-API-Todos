@@ -1,0 +1,186 @@
+openapi: 3.0.3
+info:
+  title: Todo's Backend- OpenAPI 3.0
+  description: |-
+    This is a sample basic todo's API Server based on the OpenAPI 3.0 specification.  
+    You can now help us improve the API whether it's by making changes to the definition itself or to the code or developing the frontend for the backend API. 
+
+
+
+    Some useful links:
+    - [The  Contact-Backend API repository](https://github.com/swagger-api/swagger-petstore)
+
+  contact:
+    email: rukesh.shrestha11@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000
+    description: Development Server
+
+tags:
+  - name: Todo's
+    description: Performing CRUD implementing todo's
+
+paths:
+  /api/todos:
+    get:
+      tags:
+        - Todo's
+      summary: Get all the Todo's
+      description: Get all the todo's created by the user's
+      responses:
+        "200":
+          description: Successful Operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Todos"
+
+  /api/todos/{todosID}:
+    get:
+      tags:
+        - Todo's
+      summary: Find the todos by ID
+      description: Returns a single Todo
+      parameters:
+        - name: todosID
+          in: path
+          description: ID of the todo
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successfull Operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Todos"
+        "400":
+          description: Invalid ID
+
+        "404":
+          description: Data not found
+
+  /api/todos/update:
+    post:
+      tags:
+        - Todo's
+      summary: Create the Todos Data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                title:
+                  type: string
+                  description: Title of the todos
+                description:
+                  type: string
+                  description: Brief description of the todos title.
+        required: true
+
+      responses:
+        "200":
+          description: Todo's created successfully
+        "400":
+          description: Missing Field - Validation Error
+
+  /api/todos/update/{todosID}:
+    put:
+      tags:
+        - Todo's
+      summary: Find and Update  the todos by ID
+      description: Returns a single Todo
+      parameters:
+        - name: todosID
+          in: path
+          description: ID of the todo
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                title:
+                  type: string
+                  description: Title of the todos
+                description:
+                  type: string
+                  description: Brief description of the todos title.
+        required: true
+      responses:
+        "200":
+          description: Successfull Operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Todos"
+        "400":
+          description: Invalid ID
+
+        "404":
+          description: Data not found
+  /api/todos/delete/{todosID}:
+    delete:
+      tags:
+        - Todo's
+      summary: Find the todos by ID and delete it
+      description: Returns a single Todo
+      parameters:
+        - name: todosID
+          in: path
+          description: ID of the todo
+          required: true
+          schema:
+            type: string
+            description: Object Id of the todos
+      responses:
+        "200":
+          description: Successfull Operation
+
+        "400":
+          description: Invalid ID
+
+        "404":
+          description: Data not found
+components:
+  schemas:
+    Todos:
+      type: object
+      required:
+        - title
+        - description
+      properties:
+        id:
+          type: string
+          description: Auto created while createing the todos
+          example: fgdfj435y677jhgdd
+        title:
+          type: string
+          description: Title of the todos
+          example: Reading book.
+        description:
+          type: string
+          description: Brief description of the todos title.
+          example: I am going to read Rich Dad Poor Dad Book.
+        createdAt:
+          type: string
+          description: Todos created date and time. Updated automatically.
+          example: 2023-07-29T07:31:04.400Z
+        updatedAt:
+          type: string
+          description: Todos updated date and time. Updated automatically.
+          example: 2023-07-29T07:31:04.400Z
+        __v:
+          type: string
+          description: Todos version key. Automatically created.
+          example: 0
