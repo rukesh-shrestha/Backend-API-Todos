@@ -24,6 +24,8 @@ servers:
 tags:
   - name: Todo's
     description: Performing CRUD implementing todo's
+  - name: User
+    description: User Management System of the Todo's
 
 paths:
   /api/todos:
@@ -152,35 +154,123 @@ paths:
 
         "404":
           description: Data not found
+
+  /api/users/signup:
+    post:
+      tags:
+        - User
+      summary: Create the new user
+      description: Registering the new user for the sign up
+      requestBody:
+        description: User properties object
+        content:
+          application/json:
+            schema:
+              properties:
+                username:
+                  type: string
+                  description: username of the user
+                  example: Ram Sharma
+                email:
+                  type: string
+                  description: email of the user
+                  example: shreeram23@gmail.com
+                firstName:
+                  type: string
+                  description: first name of the user
+                  example: Ram Shree
+                lastName:
+                  type: string
+                  description: last name of the user
+                  example: Sharma
+                password:
+                  type: string
+                  description: password of the user
+                  example: password23
+                confirmPassword:
+                  type: string
+                  description: Re-type your password
+                  example: password23
+
+      responses:
+        "200":
+          description: User Created Successfully
+        "400":
+          description: Validation Error - Missing Field
+        "403":
+          description: Validation Error - Email or Password field invalid
+        "401":
+          description: Unautthorized - User Already Exist
+
 components:
   schemas:
+    AllSchemaRepetated:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Id to identifiy the particular data. Updated automatically.
+          example: 34567865fdghgnbvc45964gv
+        createdAt:
+          type: string
+          description: created date and time. Updated automatically.
+          example: 2023-07-29T07:31:04.400Z
+        updatedAt:
+          type: string
+          description: updated date and time. Updated automatically.
+          example: 2023-07-29T07:31:04.400Z
+        __v:
+          type: string
+          description: version key. Automatically created.
+          example: 0
+      x-visibility: hidden
+
     Todos:
       type: object
       required:
         - title
         - description
-      properties:
-        id:
-          type: string
-          description: Auto created while createing the todos
-          example: fgdfj435y677jhgdd
-        title:
-          type: string
-          description: Title of the todos
-          example: Reading book.
-        description:
-          type: string
-          description: Brief description of the todos title.
-          example: I am going to read Rich Dad Poor Dad Book.
-        createdAt:
-          type: string
-          description: Todos created date and time. Updated automatically.
-          example: 2023-07-29T07:31:04.400Z
-        updatedAt:
-          type: string
-          description: Todos updated date and time. Updated automatically.
-          example: 2023-07-29T07:31:04.400Z
-        __v:
-          type: string
-          description: Todos version key. Automatically created.
-          example: 0
+      allOf:
+        - properties:
+            title:
+              type: string
+              description: Title of the todos
+              example: Reading book.
+            description:
+              type: string
+              description: Brief description of the todos title.
+              example: I am going to read Rich Dad Poor Dad Book.
+        - $ref: "#/components/schemas/AllSchemaRepetated"
+
+    User:
+      type: object
+      required:
+        - username
+        - email
+        - firstName
+        - lastName
+        - password
+
+      allOf:
+        - properties:
+            username:
+              type: string
+              description: username of the user
+              example: Ram Sharma
+            email:
+              type: string
+              description: email of the user
+              example: shreeram23@gmail.com
+            firstName:
+              type: string
+              description: first name of the user
+              example: Ram Shree
+            lastName:
+              type: string
+              description: last name of the user
+              example: Sharma
+            password:
+              type: string
+              description: password of the user
+              example: password23
+        - $ref: "#/components/schemas/AllSchemaRepetated"
