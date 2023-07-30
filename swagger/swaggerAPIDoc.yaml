@@ -202,6 +202,36 @@ paths:
           description: Validation Error - Email or Password field invalid
         "401":
           description: Unautthorized - User Already Exist
+  /api/users/signin:
+    post:
+      tags:
+        - User
+      summary: Authenticate the Signup users
+      description: authenticate the users
+      requestBody:
+        description: User object
+        content:
+          application/json:
+            schema:
+              properties:
+                email:
+                  type: string
+                  description: register user email address
+                  example: shreeram23@gmail.com
+                password:
+                  type: string
+                  description: register user password
+                  example: adminadmin
+        required: true
+      responses:
+        "200":
+          description: Authenticate Successfully
+        "400":
+          description: Missing Field [email or password]
+        "404":
+          description: User Not Found - Doesnot have any account with the given email
+        "401":
+          description: Validation Error - Password do not match
 
 components:
   schemas:
@@ -275,3 +305,8 @@ components:
               description: password of the user
               example: password23
         - $ref: "#/components/schemas/AllSchemaRepetated"
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

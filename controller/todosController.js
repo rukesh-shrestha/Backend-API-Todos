@@ -28,9 +28,11 @@ const getParticularData = async function (req, res) {
 const updateData = async function (req, res) {
   try {
     const { title, description } = req.body;
+    console.log(req.user);
     const todos = await Todos.create({
       title,
       description,
+      user_id: req.user.id,
     });
     console.log(todos);
 

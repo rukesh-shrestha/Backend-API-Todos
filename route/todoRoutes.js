@@ -8,6 +8,8 @@ const {
   deleteParticularData,
 } = require("../controller/todosController");
 
+const validateToken = require("../middleware/validateTokenHandlier");
+router.use(validateToken);
 router.route("").get(getAllData);
 
 router.route("/:id").get(getParticularData);

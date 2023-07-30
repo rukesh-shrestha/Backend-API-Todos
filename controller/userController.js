@@ -69,7 +69,12 @@ const signInUser = async (req, res) => {
       throw new Error("Missing Field");
     } else {
       const userAvailable = await User.findOne({ email });
-      comparePassword = await bcrypt.compare(password, userAvailable.password);
+      userAvailable
+        ? (comparePassword = await bcrypt.compare(
+            password,
+            userAvailable.password
+          ))
+        : res.status(404);
 
       if (!userAvailable) {
         res.status(404);
