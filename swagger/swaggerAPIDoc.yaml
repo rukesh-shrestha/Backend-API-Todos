@@ -34,6 +34,8 @@ paths:
         - Todo's
       summary: Get all the Todo's
       description: Get all the todo's created by the user's
+      security:
+        - bearerAuth: []
       responses:
         "200":
           description: Successful Operation
@@ -50,6 +52,8 @@ paths:
         - Todo's
       summary: Find the todos by ID
       description: Returns a single Todo
+      security:
+        - bearerAuth: []
       parameters:
         - name: todosID
           in: path
@@ -75,6 +79,8 @@ paths:
       tags:
         - Todo's
       summary: Create the Todos Data
+      security:
+        - bearerAuth: []
       requestBody:
         content:
           application/json:
@@ -100,6 +106,8 @@ paths:
         - Todo's
       summary: Find and Update  the todos by ID
       description: Returns a single Todo
+      security:
+        - bearerAuth: []
       parameters:
         - name: todosID
           in: path
@@ -137,6 +145,8 @@ paths:
         - Todo's
       summary: Find the todos by ID and delete it
       description: Returns a single Todo
+      security:
+        - bearerAuth: []
       parameters:
         - name: todosID
           in: path
