@@ -58,4 +58,16 @@ const signUpUser = async (req, res) => {
   }
 };
 
-module.exports = signUpUser;
+const signInUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      res.status(400);
+      throw new Error("Missing Field");
+    }
+  } catch (error) {
+    res.json({ error: error.message });
+  }
+};
+
+module.exports = { signUpUser, signInUser };

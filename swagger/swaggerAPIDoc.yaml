@@ -191,6 +191,7 @@ paths:
                   type: string
                   description: Re-type your password
                   example: password23
+        required: true
 
       responses:
         "200":
