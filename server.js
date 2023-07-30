@@ -19,6 +19,7 @@ app.response.sendStatus = function (statusCode, type, message) {
 
 const connectDB = require("./config/dbConfiguration");
 const todoRoute = require("./route/todoRoutes");
+const userRoute = require("./route/userRoutes");
 connectDB();
 
 const corsOptions = {
@@ -33,6 +34,7 @@ app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 app.use(express.json());
 app.use("/api/todos", todoRoute);
+app.use("/api/users", userRoute);
 const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`The server is listening on  ${port} port.`);
