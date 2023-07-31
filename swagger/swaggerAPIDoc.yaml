@@ -18,10 +18,10 @@ info:
   version: 1.0.0
 
 servers:
+  - url: https://backendtodos.onrender.com
+    description: Hosted Server
   - url: http://localhost:3000
     description: Local Server
-  - url: https://backendtodos.onrender.com/
-    description: Hosted Server
 
 tags:
   - name: Todo's
