@@ -64,7 +64,7 @@ npm run dev
 ### Do you want to contribute in this project?
 
 - If you like to contribute in this project, you can clone the project and add the functionality.
-- After adding the funcationality create the new branch and push into it and send the pull request. 
+- After adding the functionality create the new branch and push into it and send the pull request. 
 - You can create the frontend of this API.
  
 
