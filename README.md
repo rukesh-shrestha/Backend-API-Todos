@@ -60,6 +60,7 @@ npm run dev
 
 ### API Documentation
 - You can find the API documentation in **/api-docs** route.
+- [Go To API Documentation](https://backendtodos.onrender.com/api-docs/)
   
 ### Do you want to contribute in this project?
 
