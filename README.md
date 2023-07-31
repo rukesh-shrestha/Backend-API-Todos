@@ -1,4 +1,5 @@
-## Backend-API-Todos
+# Backend-API-Todos
+
 
 This is the simple backend api of todos. 
 
@@ -45,6 +46,8 @@ Populate the .env file with :-
 - CONNECTION_STRING=REPALCE-YOUR-MONGO-DB-CLOUD-DATABASE-LINK
 
 - DOMAIN_NAME=REPLACE-YOUR-SERVER-DOMAIN
+  
+- ACCESS_TOKEN=REPLACE-YOUR-ACCESS-TOKEN
 
 </b>
 
@@ -55,7 +58,14 @@ To run the project run:
 npm run dev
 ```
 
+### API Documentation
+- You can find the API documentation in **/api-docs** route.
+  
 ### Do you want to contribute in this project?
 
-If you like to contribute in this project, you can clone the project and add the functionality or you can create the frontend of this API.
-API documentation can be found in **/api-docs** route.
+- If you like to contribute in this project, you can clone the project and add the functionality.
+- After adding the funcationality create the new branch and push into it and send the pull request. 
+- You can create the frontend of this API.
+ 
+
+
